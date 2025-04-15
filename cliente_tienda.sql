@@ -21,6 +21,7 @@ CREATE OR REPLACE TYPE BODY tNOMBRE AS
     END getNombreApellidos;
 END;
 /
+--CREAR 
 -- CREAR LA TABLA CLIENTE
 -- Esta tabla almacena información sobre los clientes, incluyendo un campo de tipo objeto tNOMBRE para el nombre completo.
 CREATE TABLE CLIENTE (
@@ -30,11 +31,46 @@ CREATE TABLE CLIENTE (
     telefono VARCHAR2(15)
 );
 
+-- ACTUALIZAMOS LA TABLA CLIENTE PARA INTRODUCIR NIF
+-- Aquí se actualiza la tabla CLIENTE para agregar un nuevo campo llamado nif, que es un VARCHAR2 de 9 caracteres.
+ALTER TABLE CLIENTE ADD (nif VARCHAR2(9));
+
+
+
 -- INSERTAR DATOS EN LA TABLA CLIENTE
 -- Aquí se insertan algunos registros de ejemplo en la tabla CLIENTE, utilizando el tipo objeto tNOMBRE para el campo nombrecompleto.
 INSERT INTO CLIENTE (id_cliente, nombrecompleto, direccion, telefono) VALUES (1, tNOMBRE('Juan', 'Pérez', 'Gómez'), 'Calle Falsa 123', '683502112');
 INSERT INTO CLIENTE (id_cliente, nombrecompleto, direccion, telefono) VALUES (2, tNOMBRE('María', 'López', 'García'), 'Avenida Siempre Viva 456', '683502113');
 INSERT INTO CLIENTE (id_cliente, nombrecompleto, direccion, telefono) VALUES (3, tNOMBRE('Pedro', 'Gómez', 'Martínez'), 'Calle de la Paz 789', '683502114');
+INSERT INTO CLIENTE (id_cliente, nombrecompleto, direccion, telefono) VALUES (4, tNOMBRE('Ana', 'Fernández', 'Sánchez'), 'Calle del Sol 101', '683502115');
+INSERT INTO CLIENTE (id_cliente, nombrecompleto, direccion, telefono) VALUES (5, tNOMBRE('Luis', 'Martínez', 'Torres'), 'Calle Luna 202', '683502116');
+INSERT INTO CLIENTE (id_cliente, nombrecompleto, direccion, telefono) VALUES (6, tNOMBRE('Laura', 'García', 'Hernández'), 'Calle Estrella 303', '683502117');
+
+--ACTUALIZAMOS EL CAMPO NIF YA QUE NO EXISTE EN EL INSERT
+-- Aquí se actualizan los registros de la tabla CLIENTE para agregar un NIF a cada cliente.
+
+UPDATE CLIENTE SET nif ='123456A' WHERE id_cliente = 1;
+UPDATE CLIENTE SET nif ='234567B' WHERE id_cliente = 2;
+UPDATE CLIENTE SET nif ='345678C' WHERE id_cliente = 3;
+UPDATE CLIENTE SET nif ='456789D' WHERE id_cliente = 4;
+UPDATE CLIENTE SET nif ='567890E' WHERE id_cliente = 5;
+UPDATE CLIENTE SET nif ='678901F' WHERE id_cliente = 6;
+
+-- VERIFICAR QUE SE HAN INSERTADO LOS DATOS EN LA TABLA CLIENTE
+-- Aquí se seleccionan todos los registros de la tabla CLIENTE para verificar que se han insertado correctamente.
+SELECT * FROM CLIENTE;
+
+-- ACTUALIZAMOS EL CAMPO nombrecompleto PARA LOS 6 CLIENTES Y CAMBIAMOS EL ID-CLIENTE A NIF
+-- Aquí se actualizan los registros de la tabla CLIENTE para cambiar el campo nombrecompleto a un nuevo formato.
+UPDATE CLIENTE SET nombrecompleto = tNOMBRE('Juan', 'Pérez', 'Gómez') WHERE id_cliente = 1;
+UPDATE CLIENTE SET nombrecompleto = tNOMBRE('María', 'López', 'García') WHERE id_cliente = 2;
+UPDATE CLIENTE SET nombrecompleto = tNOMBRE('Pedro', 'Gómez', 'Martínez') WHERE id_cliente = 3;
+UPDATE CLIENTE SET nombrecompleto = tNOMBRE('Ana', 'Fernández', 'Sánchez') WHERE id_cliente = 4;
+UPDATE CLIENTE SET nombrecompleto = tNOMBRE('Luis', 'Martínez', 'Torres') WHERE id_cliente = 5;
+UPDATE CLIENTE SET nombrecompleto = tNOMBRE('Laura', 'García', 'Hernández') WHERE id_cliente = 6;
+
+-- VERIFICAR QUE SE HAN INSERTADO LOS DATOS EN LA TABLA CLIENTE
+SELECT * FROM CLIENTE;
 
 -- PROBAR LOS MÉTODOS DEL TIPO OBJETO tNOMBRE
 -- Aquí se muestran ejemplos de cómo llamar a los métodos del tipo objeto tNOMBRE para obtener el nombre completo en diferentes formatos.
@@ -49,3 +85,6 @@ WHERE c.id_cliente = 1;
 SELECT c.id_cliente, c.nombrecompleto.getApellidosNombre() AS "APELLIDOS Y NOMBRE", c.direccion,c.telefono,
  c.nombrecompleto.getNombreApellidos() as "NOMBRE Y APELLIDOS"
 FROM CLIENTE c;
+-- ver todos los clientes con todos los datos y el nif
+SELECT c.id_cliente, c.direccion,c.telefono,
+ c.nombrecompleto.getNombreApellidos() as "NOMBRE Y APELLIDOS",c.nif FROM CLIENTE c;
