@@ -60,7 +60,7 @@ UPDATE CLIENTE SET nif ='678901F' WHERE id_cliente = 6;
 -- Aquí se seleccionan todos los registros de la tabla CLIENTE para verificar que se han insertado correctamente.
 SELECT * FROM CLIENTE;
 
--- ACTUALIZAMOS EL CAMPO nombrecompleto PARA LOS 6 CLIENTES Y CAMBIAMOS EL ID-CLIENTE A NIF
+-- ACTUALIZAMOS EL CAMPO nombrecompleto PARA LOS 6 CLIENTES 
 -- Aquí se actualizan los registros de la tabla CLIENTE para cambiar el campo nombrecompleto a un nuevo formato.
 UPDATE CLIENTE SET nombrecompleto = tNOMBRE('Juan', 'Pérez', 'Gómez') WHERE id_cliente = 1;
 UPDATE CLIENTE SET nombrecompleto = tNOMBRE('María', 'López', 'García') WHERE id_cliente = 2;
