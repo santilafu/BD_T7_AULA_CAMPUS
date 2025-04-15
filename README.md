@@ -20,6 +20,12 @@ Este repositorio contiene scripts SQL desarrollados para practicar el uso de tip
 - Inserta 6 registros de ejemplo.
 - Consultas para mostrar NIF, nombre y meses trabajados.
 
+### 🚲🤺⛷️🏌️‍♀️🧗‍♀️🧘‍♀️ `Actividad 4.sql`
+- Crea un tipo colección (VARRAY) llamado tDeportes para almacenar hasta un máximo de 15 nombres de deportes.
+
+- Utiliza una sentencia ALTER TABLE para añadir un nuevo campo llamado DEPORTES de tipo tDeportes.
+
+- Utiliza sentencias UPDATE para asignar deportes a cada uno de los clientes.
 ---
 
 ## 👨‍💻 Autor
