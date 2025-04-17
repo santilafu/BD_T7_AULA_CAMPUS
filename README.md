@@ -27,6 +27,14 @@ Este repositorio contiene scripts SQL desarrollados para practicar el uso de tip
 
 - Utiliza sentencias UPDATE para asignar deportes a cada uno de los clientes.
 ---
+### 💻💶📈💫 `Actividad 5.sql`
+- Crea un tipo objeto llamado tDetalle con atributos (producto,cantidad, precio)
+
+- Añadir un metodo dentro del tipo 
+
+- Crear la tabla DETALLE OF tDETALLE
+
+- Insertar, consultar y actualizar registros.
 
 ## 👨‍💻 Autor
 Santi 🧠💻
